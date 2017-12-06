@@ -16,6 +16,13 @@ In this project, I used C++ to write a program a pid controller to keep the vehi
 
 See files in the 'src' folder for the primary C++ files making up this project.
 ---
+
+### PID parameters effect
+
+* Kp: the performance gets better as the Kp increases ,but this increasing may cause the vehicle to spin in a circles if the cte was big. also the Kp value will cause overshots around the center line of the lane.
+* Ki: this paremeter will eliminate the steady state error. If Ki is very low the vehicle will take long time to back to the middle of the lane in the dynamic changes. And if the Ki is very large the system will be sensetive to the dynamic changes and that will cause oscillations. 
+* Kd: this parameter will reduce the oscillations. If Kd is very low the system will still oscillate.And if the Kd is very high the vehicle will take long time to be in the middle of the lane.
+
 ### PID parameters tuning
 
 I tuned the parameters manually. 
