@@ -57,7 +57,26 @@ int main()
           * NOTE: Feel free to play around with the throttle and speed. Maybe use
           * another PID controller to control the speed!
           */
-          
+          double Kp=0.4;
+          double Ki=0.001;
+          double Kd=7;
+          double clipping_value=1;
+
+          if(!pid.is_initialized){
+            pid.Init(Kp,Ki,Kd,cte);
+          }
+          else{
+            pid.UpdateError(cte);
+          }
+          steer_value=pid.TotalError();
+          if (steer_value>clipping_value){
+            steer_value=clipping_value;
+          }
+          else if(steer_value<-clipping_value){
+            steer_value=-clipping_value;
+          }
+          steer_value/=clipping_value;
+
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 

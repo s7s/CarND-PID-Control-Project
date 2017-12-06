@@ -17,6 +17,10 @@ public:
   double Ki;
   double Kd;
 
+
+  bool is_initialized;
+
+  double last_cte;
   /*
   * Constructor
   */
@@ -30,7 +34,7 @@ public:
   /*
   * Initialize PID.
   */
-  void Init(double Kp, double Ki, double Kd);
+  void Init(double Kp, double Ki, double Kd, double cte);
 
   /*
   * Update the PID error variables given cross track error.
